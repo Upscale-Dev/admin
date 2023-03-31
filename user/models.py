@@ -10,10 +10,11 @@ class Users(models.Model):
     email = models.TextField(unique=True)
     fullname = models.TextField(blank=True, null=True)
     hashed_password = models.TextField(blank=True, null=True)
+    type = models.TextField(blank=True, null=True, choices=TYPE_CHOICES)
+    subscription_until = models.DateTimeField(blank=True, null=True)
     created_at = models.DateTimeField(blank=True, null=True)
     updated_at = models.DateTimeField(blank=True, null=True)
     deleted_at = models.DateTimeField(blank=True, null=True)
-    type = models.TextField(blank=True, null=True, choices=TYPE_CHOICES)
 
     class Meta:
         managed = True
