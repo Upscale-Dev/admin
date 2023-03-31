@@ -12,9 +12,9 @@ processes = []
 [env]
   PORT = "8000"
   DB_PORT=5432
-  DB_HOST="upscale-db.internal"
-  DB_USER="postgres"
-  DB_PASSWORD="nFHKlPiUi1B0kzH"
+  DB_HOST="upscale-db.flycast"
+  DB_USER="bizboost_admin"
+  DB_PASSWORD="howJ0tq5mLJvhlC"
   DB_NAME="upscale"
   DEBUG="False"
 
