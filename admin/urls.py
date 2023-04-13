@@ -4,5 +4,5 @@ from django.urls import path
 admin.site.site_header = "Bizboost Admin"
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('', admin.site.urls),
 ]

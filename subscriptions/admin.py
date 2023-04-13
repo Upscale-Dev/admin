@@ -8,7 +8,7 @@ import pytz
 
 class SubscriptionAdmin(admin.ModelAdmin):
     actions = ['make_active']
-    list_display = ('id', 'get_user', 'status', 'length', 'created_at')
+    list_display = ('id', 'get_user', 'status', 'package_id', 'created_at')
 
     @admin.action(description="Mark select subscription as active")
     def make_active(self, request, queryset):

@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'user',
     'subscriptions',
     'password_reset',
+    'subscription_package',
 ]
 
 MIDDLEWARE = [
