@@ -1,5 +1,6 @@
 from django.contrib import admin
 from subscriptions.models import Subscriptions
+from subscription_package.models import SubscriptionPackages
 from dateutil.relativedelta import relativedelta
 from user.models import Users
 from subscriptions.models import Subscriptions
@@ -17,9 +18,10 @@ class SubscriptionAdmin(admin.ModelAdmin):
                 continue
             Subscriptions.objects.filter(id=q.id).update(status='Active')
             user = Users.objects.filter(id=q.user.id).get()
+            package = SubscriptionPackages.objects.filter(id=q.package_id).get()
             if (user.subscription_until.strftime("%Y") == "0001"):
                 user.subscription_until = datetime.now(pytz.timezone('Asia/Jakarta'))
-            user.subscription_until = user.subscription_until + relativedelta(months=q.length)
+            user.subscription_until = user.subscription_until + relativedelta(months=package.length)
             user.save()
 
     @admin.display(description="user")
