@@ -16,13 +16,19 @@ class SubscriptionAdmin(admin.ModelAdmin):
         for q in queryset:
             if q.status == 'Active':
                 continue
-            Subscriptions.objects.filter(id=q.id).update(status='Active')
+            
             user = Users.objects.filter(id=q.user.id).get()
             package = SubscriptionPackages.objects.filter(id=q.package_id).get()
-            if (user.subscription_until.strftime("%Y") == "0001"):
+            existing_subscribption = Subscriptions.objects.filter(user=user.id).exclude(id=q.id).first()
+            
+            if (existing_subscribption is None):
                 user.subscription_until = datetime.now(pytz.timezone('Asia/Jakarta'))
+
             user.subscription_until = user.subscription_until + relativedelta(months=package.length)
             user.save()
+
+            q.status = 'Active'
+            q.save()
 
     @admin.display(description="user")
     def get_user(self, obj):
