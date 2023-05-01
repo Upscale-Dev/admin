@@ -19,7 +19,7 @@ class SubscriptionAdmin(admin.ModelAdmin):
             
             user = Users.objects.filter(id=q.user.id).get()
             package = SubscriptionPackages.objects.filter(id=q.package_id).get()
-            existing_subscribption = Subscriptions.objects.filter(user=user.id).exclude(id=q.id).first()
+            existing_subscribption = Subscriptions.objects.filter(user=user.id, status='Active').exclude(id=q.id).first()
             
             if (existing_subscribption is None):
                 user.subscription_until = datetime.now(pytz.timezone('Asia/Jakarta'))
