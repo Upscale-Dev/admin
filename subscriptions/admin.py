@@ -1,6 +1,5 @@
 from django.contrib import admin
-from subscriptions.models import Subscriptions
-from subscription_package.models import SubscriptionPackages
+from subscriptions.models import Subscriptions, SubscriptionPackages
 from dateutil.relativedelta import relativedelta
 from user.models import Users
 from subscriptions.models import Subscriptions
@@ -35,3 +34,8 @@ class SubscriptionAdmin(admin.ModelAdmin):
         return obj.user.fullname
 
 admin.site.register(Subscriptions, SubscriptionAdmin)
+
+class SubscriptionPackageAdmin(admin.ModelAdmin):
+    list_display = ('id', 'length', 'price', 'description')
+
+admin.site.register(SubscriptionPackages, SubscriptionPackageAdmin)

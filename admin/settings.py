@@ -44,12 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'user',
     'subscriptions',
-    'password_reset',
-    'subscription_package',
-    'category',
-    'tag',
-    'course_tag',
-    'course'
+    'course',
 ]
 
 MIDDLEWARE = [
