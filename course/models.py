@@ -56,3 +56,14 @@ class CourseProgress(models.Model):
         managed = True
         db_table = 'course_users'
 
+class Videos(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    course = models.ForeignKey(Courses, models.DO_NOTHING, blank=True, null=True)
+    name = models.TextField()
+    description = models.TextField(blank=True, null=True)
+    thumbnail_url = models.TextField()
+    main_url = models.TextField()
+
+    class Meta:
+        managed = False
+        db_table = 'videos'

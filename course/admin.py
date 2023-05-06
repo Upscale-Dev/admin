@@ -1,5 +1,5 @@
 from django.contrib import admin
-from course.models import Courses, Categories, Tags, CourseTags, CourseProgress
+from course.models import Courses, Categories, Tags, CourseTags, CourseProgress, Videos
 from user.models import Users
 
 class CourseAdmin(admin.ModelAdmin):
@@ -50,3 +50,12 @@ class CourseProgressAdmin(admin.ModelAdmin):
         return course.name
 
 admin.site.register(CourseProgress, CourseProgressAdmin)
+
+class VideoAdmin(admin.ModelAdmin):
+    list_display = ('id', 'get_course', 'name', 'description', 'thumbnail_url', 'main_url')
+
+    @admin.display(description="course")
+    def get_course(self, obj):
+        return obj.course.name
+
+admin.site.register(Videos, VideoAdmin)
