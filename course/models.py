@@ -1,9 +1,10 @@
 from django.db import models
+from category.models import Categories
 
 # Create your models here.
 class Courses(models.Model):
     id = models.BigAutoField(primary_key=True)
-    category_id = models.BigIntegerField()
+    category_id = models.ForeignKey(Categories, on_delete=models.CASCADE)
     name = models.TextField(unique=True)
     description = models.TextField(blank=True, null=True)
     image_url = models.TextField(blank=True, null=True)
@@ -18,7 +19,7 @@ class Courses(models.Model):
 
 class Videos(models.Model):
     id = models.BigAutoField(primary_key=True)
-    course_id = models.BigIntegerField(blank=True, null=True)
+    course_id = models.ForeignKey(Courses, on_delete=models.CASCADE)
     name = models.TextField()
     description = models.TextField(blank=True, null=True)
     thumbnail_url = models.TextField()
