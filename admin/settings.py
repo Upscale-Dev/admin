@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'subscription_package',
     'category',
     'tag',
-    'course_tag'
+    'course_tag',
+    'course'
 ]
 
 MIDDLEWARE = [
