@@ -15,3 +15,15 @@ class Courses(models.Model):
     class Meta:
         managed = False
         db_table = 'courses'
+
+class Videos(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    course_id = models.BigIntegerField(blank=True, null=True)
+    name = models.TextField()
+    description = models.TextField(blank=True, null=True)
+    thumbnail_url = models.TextField()
+    main_url = models.TextField()
+
+    class Meta:
+        managed = False
+        db_table = 'videos'
