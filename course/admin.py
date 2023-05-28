@@ -1,13 +1,21 @@
 from django.contrib import admin
 from course.models import Courses, Categories, Tags, CourseTags, CourseProgress, Videos
 from user.models import Users
+from course.forms import CourseAdminForm
 
 class CourseAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'get_category', 'description', 'image_url', 'trailer_url', 'files')
+    list_display = ('id', 'name', 'get_category', 'description', 'image_url', 'trailer_url', 'files', 'created_at')
 
     @admin.display(description="category")
     def get_category(self, obj):
         return obj.category.name
+    
+    def get_form(self, request, obj=None, **kwargs):
+        if obj is None:
+            self.form = CourseAdminForm
+
+        return super().get_form(request, obj, **kwargs)
+
     
 admin.site.register(Courses, CourseAdmin)
 
