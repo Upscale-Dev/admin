@@ -8,6 +8,9 @@ class Categories(models.Model):
         managed = True
         db_table = 'categories'
 
+    def __str__(self) -> str:
+        return f"[{self.id}] {self.name}"
+
 class Tags(models.Model):
     id = models.BigAutoField(primary_key=True)
     name = models.TextField(blank=True, null=True)
@@ -24,6 +27,7 @@ class CourseTags(models.Model):
     class Meta:
         managed = True
         db_table = 'course_tags'
+
 class Courses(models.Model):
     id = models.BigAutoField(primary_key=True)
     category = models.ForeignKey(Categories, models.CASCADE, blank=True, null=True)
@@ -39,6 +43,9 @@ class Courses(models.Model):
     class Meta:
         managed = True
         db_table = 'courses'
+
+    def __str__(self) -> str:
+        return f"[{self.id}] {self.name}"
 
 STATUS_CHOICES = [
     ('ON PROGRESS', 'ON PROGRESS'),
