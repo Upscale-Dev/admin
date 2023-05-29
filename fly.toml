@@ -16,6 +16,7 @@ processes = []
   R2_THUMBNAIL_BUCKET = "thumbnails"
   R2_TRAILER_BUCKET = "trailers"
   R2_VIDEO_BUCKET = "videos"
+  R2_IMAGE_BUCKET = "images"
   PORT = "8000"
   DB_PORT=5432
   DB_HOST="upscale-db.flycast"
