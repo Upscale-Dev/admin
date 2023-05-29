@@ -8,7 +8,7 @@ def upload_image(image_file):
     image_storage = ImageStorage()
     image_storage_name = image_file.__str__()
     image_storage.save(image_storage_name, image_file)
-    new_image_url = image_storage.url(image_storage)
+    new_image_url = image_storage.url(image_storage_name)
     return new_image_url
 
 
