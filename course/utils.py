@@ -6,7 +6,7 @@ from course.custom_storage import ImageStorage, ThumbnailStorage, TrailerStorage
 
 def upload_image(image_file):
     image_storage = ImageStorage()
-    image_storage_name = image_storage.__str__()
+    image_storage_name = image_file.__str__()
     image_storage.save(image_storage_name, image_file)
     new_image_url = image_storage.url(image_storage)
     return new_image_url
@@ -30,9 +30,9 @@ def upload_trailer(trailer_video):
 
 def upload_main_video(main_video):
     video_storage = VideoStorage()
-    video_storage_name = video_storage.__str__()
+    video_storage_name = main_video.__str__()
     video_storage.save(video_storage_name, main_video)
-    new_video_url = video_storage.url(new_video_url)
+    new_video_url = video_storage.url(video_storage_name)
     return new_video_url
 
 
