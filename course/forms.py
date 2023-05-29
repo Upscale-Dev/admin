@@ -27,3 +27,24 @@ class CourseAdminForm(forms.ModelForm):
         model = Courses
         exclude = ["image_url", "trailer_url",
                    "updated_at", "created_at", "deleted_at"]
+
+
+class VideoAdminForm(forms.ModelForm):
+    thumbnail_image = forms.FileField(label="Thumbnail Image", required=True)
+    main_video = forms.FileField(label="Main Video", required=True)
+
+    def save(self, commit=True) -> Any:
+        thumbnail_image = self.cleaned_data.get('thumbnail_image', None)
+        new_thumbnail_url = utils.upload_thumbnail(thumbnail_image)
+
+        main_video = self.cleaned_data.get('main_video', None)
+        new_main_url = utils.upload_main_video(main_video)
+
+        self.instance.thumbnail_url = new_thumbnail_url
+        self.instance.main_url = new_main_url
+
+        return super().save(commit)
+
+    class Meta:
+        model = Courses
+        exclude = ["thumbnail_url", "main_url"]
