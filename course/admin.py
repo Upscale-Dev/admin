@@ -10,6 +10,8 @@ class CourseAdmin(admin.ModelAdmin):
 
     @admin.display(description="category")
     def get_category(self, obj):
+        if obj is None:
+            return "category not found"
         return obj.category.name
 
     def get_form(self, request, obj=None, **kwargs):
