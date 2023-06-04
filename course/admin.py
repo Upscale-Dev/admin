@@ -10,14 +10,12 @@ class CourseAdmin(admin.ModelAdmin):
 
     @admin.display(description="category")
     def get_category(self, obj):
-        if obj is None:
-            return "category not found"
+        if obj.category is None:
+            return "Category Not Found"
         return obj.category.name
 
-    def get_form(self, request, obj=None, **kwargs):
-        if obj is None:
-            self.form = CourseAdminForm
-
+    def get_form(self, request, obj, **kwargs):
+        self.form = CourseAdminForm
         return super().get_form(request, obj, **kwargs)
 
 
@@ -25,7 +23,7 @@ admin.site.register(Courses, CourseAdmin)
 
 
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name')
+    list_display = ('id', 'name', 'description')
 
 
 admin.site.register(Categories, CategoryAdmin)
@@ -80,9 +78,8 @@ class VideoAdmin(admin.ModelAdmin):
     def get_course(self, obj):
         return obj.course.name
 
-    def get_form(self, request, obj=None, **kwargs):
-        if obj is None:
-            self.form = VideoAdminForm
+    def get_form(self, request, obj, **kwargs):
+        self.form = VideoAdminForm
         return super().get_form(request, obj, **kwargs)
 
 
