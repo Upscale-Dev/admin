@@ -134,3 +134,17 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_FILE_STORAGE = "course.custom_storage.ThumbnailStorage"
+
+AWS_S3_ACCOUNT_ID = os.getenv("R2_ACCOUNT_ID")
+AWS_S3_ACCESS_KEY_ID = os.getenv("R2_ACCESS_KEY_ID")
+AWS_S3_SECRET_ACCESS_KEY = os.getenv("R2_ACCESS_KEY_SECRET")
+AWS_S3_ENDPOINT_URL = f'https://{AWS_S3_ACCOUNT_ID}.r2.cloudflarestorage.com'
+AWS_S3_SIGNATURE_VERSION = 's3v4'
+AWS_S3_REGION_NAME = 'auto'
+
+R2_IMAGE_BUCKET = os.getenv("R2_IMAGE_BUCKET")
+R2_THUMBNAIL_BUCKET = os.getenv("R2_THUMBNAIL_BUCKET")
+R2_TRAILER_BUCKET = os.getenv("R2_TRAILER_BUCKET")
+R2_VIDEO_BUCKET = os.getenv("R2_VIDEO_BUCKET")
+R2_FILES_BUCKET = os.getenv("R2_FILES_BUCKET")

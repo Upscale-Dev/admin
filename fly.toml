@@ -10,6 +10,14 @@ processes = []
   release_command = "python manage.py migrate"
 
 [env]
+  R2_ACCOUNT_ID = "581dcf5c7d2c8c844c07ea8edd8fa999"
+  R2_ACCESS_KEY_ID = ""
+  R2_ACCESS_KEY_SECRET = ""
+  R2_THUMBNAIL_BUCKET = "thumbnails"
+  R2_TRAILER_BUCKET = "trailers"
+  R2_VIDEO_BUCKET = "videos"
+  R2_IMAGE_BUCKET = "images"
+  R2_FILES_BUCKET = "files"
   PORT = "8000"
   DB_PORT=5432
   DB_HOST="upscale-db.flycast"
