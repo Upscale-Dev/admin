@@ -8,6 +8,7 @@ from course.models import Courses
 class CourseAdminForm(forms.ModelForm):
     image_file = forms.FileField(label="Image File", required=True)
     trailer_video = forms.FileField(label="Trailer Video", required=True)
+    files = forms.FileField(label="Files", required=True)
 
     def save(self, commit=True) -> Any:
         image_file = self.cleaned_data.get('image_file', None)
@@ -16,8 +17,12 @@ class CourseAdminForm(forms.ModelForm):
         trailer_video = self.cleaned_data.get('trailer_video', None)
         new_trailer_url = utils.upload_trailer(trailer_video)
 
+        files = self.cleaned_data.get('files', None)
+        new_files_url = utils.upload_files(files)
+
         self.instance.image_url = new_image_url
         self.instance.trailer_url = new_trailer_url
+        self.instance.files = new_files_url
         self.instance.created_at = utils.jkt_now()
         self.instance.updated_at = utils.jkt_now()
 

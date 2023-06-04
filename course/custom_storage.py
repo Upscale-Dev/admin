@@ -16,3 +16,6 @@ class TrailerStorage(S3Boto3Storage):
 
 class VideoStorage(S3Boto3Storage):
     bucket_name = getattr(settings, "R2_VIDEO_BUCKET", "videos")
+
+class FilesStorage(S3Boto3Storage):
+    bucket_name = getattr(settings, "R2_FILES_BUCKET", "files")
