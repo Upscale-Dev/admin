@@ -12,13 +12,13 @@ class CourseAdminForm(forms.ModelForm):
 
     def save(self, commit=True) -> Any:
         image_file = self.cleaned_data.get('image_file', None)
-        new_image_url = utils.upload_image(image_file)
+        new_image_url = utils.upload_object(image_file)
 
         trailer_video = self.cleaned_data.get('trailer_video', None)
-        new_trailer_url = utils.upload_trailer(trailer_video)
+        new_trailer_url = utils.upload_object(trailer_video)
 
         files = self.cleaned_data.get('files', None)
-        new_files_url = utils.upload_files(files)
+        new_files_url = utils.upload_object(files)
 
         self.instance.image_url = new_image_url
         self.instance.trailer_url = new_trailer_url
@@ -40,10 +40,10 @@ class VideoAdminForm(forms.ModelForm):
 
     def save(self, commit=True) -> Any:
         thumbnail_image = self.cleaned_data.get('thumbnail_image', None)
-        new_thumbnail_url = utils.upload_thumbnail(thumbnail_image)
+        new_thumbnail_url = utils.upload_object(thumbnail_image)
 
         main_video = self.cleaned_data.get('main_video', None)
-        new_main_url = utils.upload_main_video(main_video)
+        new_main_url = utils.upload_object(main_video)
 
         self.instance.thumbnail_url = new_thumbnail_url
         self.instance.main_url = new_main_url
