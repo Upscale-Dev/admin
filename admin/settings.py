@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-6s2fhi@1j&11me(9ra96kc1u(rspoieq6@zjb&-5!#-!ed18l2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG")
 
-ALLOWED_HOSTS = ["bizboost-admin.fly.dev", "localhost", "127.0.0.1"]
+ALLOWED_HOSTS = ["bizboost-admin.fly.dev", "localhost", "127.0.0.1", "admin.bizbzt.com"]
 
 CSRF_TRUSTED_ORIGINS = ["https://bizboost-admin.fly.dev"]
 
