@@ -30,7 +30,7 @@ DEBUG = os.getenv("DEBUG")
 
 ALLOWED_HOSTS = ["bizboost-admin.fly.dev", "localhost", "127.0.0.1", "admin.bizbzt.com"]
 
-CSRF_TRUSTED_ORIGINS = ["https://bizboost-admin.fly.dev"]
+CSRF_TRUSTED_ORIGINS = ["https://bizboost-admin.fly.dev", "https://admin.bizbzt.com"]
 
 
 # Application definition
