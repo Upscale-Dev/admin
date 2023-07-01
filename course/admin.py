@@ -1,7 +1,7 @@
 from django.contrib import admin
 from course.models import Courses, Categories, Tags, CourseTags, CourseProgress, Videos
 from user.models import Users
-from course.forms import CourseAdminForm, VideoAdminForm
+from course.forms import CourseAdminForm, CourseAdminEditForm, VideoAdminForm, VideoAdminEditForm
 
 
 class CourseAdmin(admin.ModelAdmin):
@@ -15,7 +15,10 @@ class CourseAdmin(admin.ModelAdmin):
         return obj.category.name
 
     def get_form(self, request, obj, **kwargs):
-        self.form = CourseAdminForm
+        if obj:
+            self.form = CourseAdminEditForm
+        else:
+            self.form = CourseAdminForm
         return super().get_form(request, obj, **kwargs)
 
 
@@ -79,7 +82,11 @@ class VideoAdmin(admin.ModelAdmin):
         return obj.course.name
 
     def get_form(self, request, obj, **kwargs):
-        self.form = VideoAdminForm
+        if obj:
+            self.form = VideoAdminEditForm
+        else:
+            self.form = VideoAdminForm
+
         return super().get_form(request, obj, **kwargs)
 
 
